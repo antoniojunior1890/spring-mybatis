@@ -8,23 +8,9 @@ spring:
     continue-on-error: true
     schema: classpath:/schema.sql
     data: classpath:/data.sql
-#
-#    tomcat:
-#      test-while-idle: true
-#      validation-query: SELECT 1
 
-#  datasource:
-#    url: jdbc:h2:mem:testdb
-#    driverClassName: org.h2.Driver
-#    username: sa
+mybatis:
+  type-aliases-package: com.antonio.example.mybatis.model
+  mapper-locations: classpath*:**/mappers/*Mapper.xml
 
-#  jpa:
-#    database-platform: org.hibernate.dialect.PostgreSQLDialect
-#    show-sql: true
-#    open-in-view: false
-#    properties:
-#      hibernate:
-#        format_sql: true
-#    hibernate:
-#      ddl-auto: create-drop
 

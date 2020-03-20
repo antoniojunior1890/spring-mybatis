@@ -2,20 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.antonio.example.mybatis.mapper.ProductMapper">
 
-    <select id="findAll" resultType="com.antonio.example.mybatis.model.Product">
-<!--        select * from product-->
+    <select id="list" resultType="com.antonio.example.mybatis.model.Product">
+        select * from product
     </select>
 
-<!--    <insert id="save" parameterType="com.antonio.example.mybatis.model.Product">-->
-<!--&lt;!&ndash;            useGeneratedKeys="true" keyColumn="id"&ndash;&gt;-->
-<!--&lt;!&ndash;            keyProperty="product.id">&ndash;&gt;-->
-<!--&lt;!&ndash;        INSERT INTO PRODUCT&ndash;&gt;-->
-<!--&lt;!&ndash;            (name, description, price)&ndash;&gt;-->
-<!--&lt;!&ndash;        VALUES&ndash;&gt;-->
-<!--&lt;!&ndash;        (&ndash;&gt;-->
-<!--&lt;!&ndash;            #{product.name},&ndash;&gt;-->
-<!--&lt;!&ndash;            #{product.description},&ndash;&gt;-->
-<!--&lt;!&ndash;            #{product.price}&ndash;&gt;-->
-<!--&lt;!&ndash;        )&ndash;&gt;-->
-<!--    </insert>-->
+    <insert id="save" parameterType="com.antonio.example.mybatis.model.Product"
+            useGeneratedKeys="true" keyColumn="id"
+            keyProperty="product.id">
+        INSERT INTO PRODUCT
+            (name, description, price)
+        VALUES
+        (
+            #{product.name},
+            #{product.description},
+            #{product.price}
+        )
+    </insert>
 </mapper>

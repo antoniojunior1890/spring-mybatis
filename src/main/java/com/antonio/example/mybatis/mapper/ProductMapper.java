@@ -10,11 +10,11 @@ import java.util.List;
 @Repository
 public interface ProductMapper {
 
-  @Select("SELECT * FROM PRODUCT")
-  List<Product> findAll();
-
-  @Options(useGeneratedKeys = true)
-  @Insert("INSERT INTO PRODUCT (name, description, price ) VALUES (#{name}, #{description}, #{price})")
-  void save(Product product);
-//  void save(@Param("product") Product product);
+//  @Select("SELECT * FROM PRODUCT")
+  List<Product> list();
+//
+//  @Options(useGeneratedKeys = true)
+//  @Insert("INSERT INTO PRODUCT (name, description, price ) VALUES (#{name}, #{description}, #{price})")
+//  void save(Product product);
+  void save(@Param("product") Product product);
 }
