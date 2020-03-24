@@ -30,10 +30,6 @@
         <include refid="product"></include>
     </select>
 
-<!--    <select id="list" resultType="com.antonio.example.mybatis.model.Product">-->
-<!--        select * from product-->
-<!--    </select>-->
-
     <insert id="save" parameterType="com.antonio.example.mybatis.model.Product"
             useGeneratedKeys="true" keyColumn="id"
             keyProperty="product.id">

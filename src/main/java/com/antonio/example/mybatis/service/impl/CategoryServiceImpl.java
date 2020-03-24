@@ -23,4 +23,9 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryMapper.list();
     }
 
+    @Override
+    public void save(Category category) {
+        categoryMapper.save(category);
+    }
+
 }

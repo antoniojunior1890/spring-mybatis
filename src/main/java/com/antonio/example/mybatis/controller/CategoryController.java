@@ -27,5 +27,10 @@ public class CategoryController {
         return ResponseEntity.ok(categoryServiceImpl.listAll());
     }
 
+    @PostMapping
+    public ResponseEntity<?> create(@RequestBody @Valid Category category){
+        categoryServiceImpl.save(category);
+        return ResponseEntity.ok().build();
+    }
 }
 

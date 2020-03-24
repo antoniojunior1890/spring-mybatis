@@ -10,4 +10,5 @@ public interface CategoryService {
 
     List<Category> listAll();
 
+    void save(@Param("category") Category category);
 }
