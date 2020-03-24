@@ -26,7 +26,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody @Valid Product product){
+    public ResponseEntity<?> create(@RequestBody Product product){
         productServiceImpl.save(product);
         return ResponseEntity.ok().build();
     }

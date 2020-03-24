@@ -31,4 +31,6 @@ public class Product implements Serializable {
     @Min(value = 0, message = "Price maior que zero")
     private double price;
 
+    private Category category;
+
 }

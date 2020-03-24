@@ -2,20 +2,49 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.antonio.example.mybatis.mapper.ProductMapper">
 
-    <select id="list" resultType="com.antonio.example.mybatis.model.Product">
-        select * from product
+    <resultMap id="categoryMap" type="com.antonio.example.mybatis.model.Category">
+        <result column="c_id" property="id"/>
+        <result column="c_name" property="name"/>
+        <result column="c_description" property="description"/>
+    </resultMap>
+
+
+    <resultMap id="productMap" type="com.antonio.example.mybatis.model.Product">
+        <result column="p_id" property="id"/>
+        <result column="p_name" property="name"/>
+        <result column="p_description" property="description"/>
+        <result column="p_price" property="price"/>
+
+        <association property="category" resultMap="categoryMap"/>
+    </resultMap>
+
+    <sql id="product">
+        SELECT
+        P.id AS p_id, P.name AS p_name, P.description AS p_description, P.price AS p_price,
+        C.id AS c_id, C.name AS c_name, C.description AS c_description
+        FROM PRODUCT P
+        INNER JOIN CATEGORY C ON P.category_id = C.id
+    </sql>
+
+    <select id="list" resultMap="productMap">
+        <include refid="product"></include>
     </select>
+
+<!--    <select id="list" resultType="com.antonio.example.mybatis.model.Product">-->
+<!--        select * from product-->
+<!--    </select>-->
 
     <insert id="save" parameterType="com.antonio.example.mybatis.model.Product"
             useGeneratedKeys="true" keyColumn="id"
             keyProperty="product.id">
         INSERT INTO PRODUCT
-            (name, description, price)
+            (name, description, price, category_id)
         VALUES
         (
             #{product.name},
             #{product.description},
-            #{product.price}
+            #{product.price},
+            #{product.category.id}
         )
     </insert>
 </mapper>
